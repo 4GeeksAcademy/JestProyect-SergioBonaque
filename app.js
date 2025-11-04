@@ -7,14 +7,14 @@ let oneEuroIs = {
 
 function fromDollarToYen (dollars){
 let euros = dollars / oneEuroIs["USD"];
-return euros * oneEuroIs ["JPY"];
-
+return euros * oneEuroIs ["JPY"]
 }
 
-function fromEuroToDollar = {
-
+function fromEuroToDollar (euros) {
+return euros * oneEuroIs ["USD"];
 }
 
-function fromYenToPound = {
-
+function fromYenToPound (yen) {
+let euros = yen / oneEuroIs ["JPY"];
+return euros * oneEuroIs ["GBP"];
 }
