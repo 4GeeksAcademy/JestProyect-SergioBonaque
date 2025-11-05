@@ -1,27 +1,27 @@
-// Conversion rates
+// app.js
+
 let oneEuroIs = {
     "JPY": 156.5, // Japanese yen
-    "USD": 1.07, // US dollar
-    "GBP": 0.87, // British pound
+    "USD": 1.07,  // US dollar
+    "GBP": 0.87   // British pound
 };
 
-// Function to convert from Euro to Dollar
-const fromEuroToDollar = function(valueInEuro) {
-    let valueInDollar = valueInEuro * oneEuroIs["USD"];
-    return valueInDollar;
+// Euro → Dollar
+function fromEuroToDollar(euros) {
+    return euros * oneEuroIs.USD;
 }
 
-// Function to convert from Dollar to Yen
+// Dollar → Yen
 function fromDollarToYen(dollars) {
-    let euros = dollars / oneEuroIs["USD"];
-    return euros * oneEuroIs["JPY"];
+    let euros = dollars / oneEuroIs.USD;   // Convert USD to EUR
+    return euros * oneEuroIs.JPY;          // Convert EUR to JPY
 }
 
-// Function to convert from Yen to Pound
+// Yen → Pound
 function fromYenToPound(yen) {
-    let euros = yen / oneEuroIs["JPY"];
-    return euros * oneEuroIs["GBP"];
+    let euros = yen / oneEuroIs.JPY;       // Convert JPY to EUR
+    return euros * oneEuroIs.GBP;          // Convert EUR to GBP
 }
 
-// Exporting all functions
+// Export all functions
 module.exports = { fromEuroToDollar, fromDollarToYen, fromYenToPound };

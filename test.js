@@ -1,19 +1,31 @@
-const { sum } = require ('./app.js');
+// test.js
 
-test('adds 14 + 9 to equal 23', () => {
-    let total = sum (14,9)
-        expect(total).toBe(23);
+const {
+  fromEuroToDollar,
+  fromDollarToYen,
+  fromYenToPound
+} = require('./app.js');
+
+describe("Currency Converter Tests", () => {
+
+  test("Convert 1 Euro to Dollars", () => {
+    expect(fromEuroToDollar(1)).toBe(1.07);
+  });
+
+  test("Convert 1 Dollar to Yen", () => {
+    // 1 USD = (1 / 1.07) EUR ≈ 0.93458 EUR
+    // 0.93458 EUR * 156.5 JPY/EUR ≈ 146.261 JPY
+    const result = fromDollarToYen(1);
+    const expected = (1 / 1.07) * 156.5;
+    expect(result).toBeCloseTo(expected, 2);  
+  });
+
+  test("Convert 1 Yen to Pounds", () => {
+    // 1 JPY = (1 / 156.5) EUR ≈ 0.0063898 EUR
+    // 0.0063898 EUR * 0.87 GBP/EUR ≈ 0.005559 GBP
+    const result = fromYenToPound(1);
+    const expected = (1 / 156.5) * 0.87;
+    expect(result).toBeCloseTo(expected, 5);  
+  });
+
 });
-test("One euro should be 1.07 dollars", function() {
-    // Import the function from app.js
-    const { fromEuroToDollar } = require('./app.js');
-
-    // Use the function like its supposed to be used
-    const dollars = fromEuroToDollar(3.5);
-
-    // If 1 euro is 1.07 dollars, then 3.5 euros should be (3.5 * 1.07)
-    const expected = 3.5 * 1.07; 
-    
-    // This is the comparison for the unit test
-     expect(fromEuroToDollar(3.5)).toBe(3.745); // 1 euro is 1.07 dollars, then 3.5 euros should be = (3.5 * 1.07)
-})
